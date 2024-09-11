@@ -38,12 +38,16 @@ class Deck:
     
     #shuffle current deck
     def shuffle_deck(self):
+        if self.get_deck_length() < 52:
+            for card in self.__removed_cards:
+                self.__final_deck.append(card)
+            random.shuffle(self.__final_deck)
         print("\nShuffling Deck...\n")
         random.shuffle(self.__final_deck)
         print(self.__final_deck)
     
     def draw(self, n):
-        print(f"\nDrawing {n} cards from top of deck...\n")
+        print(f"\nDrawing {n} cards from top of deck...")
         self.__removed_cards = self.__final_deck[0:n]
         del self.__final_deck[0:n]
         print(self.__removed_cards)
@@ -63,16 +67,20 @@ class Deck:
         print(f"Moving {chosen} to top of deck...\n")
         self.__final_deck.insert(0, chosen)
         print(self.__final_deck)
+    
+    def get_deck_length(self):
+        return len(self.__final_deck)
 
         
 
-#initalize deck instance, create deck, shuffle deck, draw 3 cards, then 6 cards, move chosen card to bottom, move chosen card to top.
+#initalize deck instance, create deck & shuffle deck, draw 3 cards, shuffle removed cards back into the deck, move chosen card to bottom, move chosen card to top.
 deck = Deck()
-deck.shuffle_deck()
 deck.draw(3)
-deck.draw(6)
+deck.shuffle_deck()
 deck.placeBottom(4)
-deck.placeTop(10)
+deck.shuffle_deck()
+deck.placeTop(5)
+
 
 
 
