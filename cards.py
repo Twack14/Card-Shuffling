@@ -66,7 +66,7 @@ class Deck:
 
         
 
-#initalize deck instance, create deck, shuffle deck, draw 3 cards, move chosen card to bottom, move chosen card to top.
+#initalize deck instance, create deck, shuffle deck, draw 3 cards, then 6 cards, move chosen card to bottom, move chosen card to top.
 deck = Deck()
 deck.shuffle_deck()
 deck.draw(3)
